@@ -5,10 +5,13 @@ app = Flask(__name__)
 
 @app.route("/", methods = ['GET','POST'])
 def marks():
+    marks_pred = None
     if request.method == "POST":
         hrs = request.form['hrs']
         marks_pred = m.marks_prediction(hrs)
-    return render_template("index.html", my_marks=marks_pred)
+        print(marks_pred)
+
+    return render_template("index.html", my_marks = marks_pred)
 
 # @app.route("/sub", methods = ["POST"])
 # def submit():
